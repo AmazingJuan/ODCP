@@ -10,7 +10,7 @@ class Bird {
 
     method void birdStructure(){
 
-        //ESTRUCTURA DEL BIRD 1
+        //ESTRUCTURA DEL BIRD 1 (ALAS TOTALMENTE ARRIBA)
         do Screen.drawLine(x-2, y-5,x+3,y-5);
         do Screen.drawPixel(x+4,y-4);
         do Screen.drawPixel(x+5,y-3);
@@ -44,6 +44,14 @@ class Bird {
         do Screen.drawPixel(x-3, y-1);
         do Screen.drawPixel(x-2, y);
         do Screen.drawPixel(x-2, y+1);
+        //ESTRUCTURA DEL BIRD 1 (ALAS EN LA MITAD)
+
+        ...
+
+        //ESTRUCTURA DEL BIRD 1 (ALAS ABAJO)
+
+        ...
+
         return;
     }
 
