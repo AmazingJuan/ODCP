@@ -1,0 +1,45 @@
+function Main.main 4
+    push constant 100
+    pop local 0
+    push constant 50
+    pop local 1
+    push local 0
+    push local 1
+    call Bird.new 2
+    pop local 3
+    push constant 0
+    pop local 2
+label Main_0
+    push local 2
+    push constant 100
+    lt
+    not
+    if-goto Main_1
+    push local 2
+    push constant 50
+    lt
+    not
+    if-goto Main_3
+    push local 3
+    call Bird.move_down 1
+    pop temp 0
+    goto Main_2
+label Main_3
+    push local 3
+    call Bird.move_up 1
+    pop temp 0
+label Main_2
+    push local 2
+    push constant 1
+    add
+    pop local 2
+    push constant 100
+    call Sys.wait 1
+    pop temp 0
+    goto Main_0
+label Main_1
+    push local 3
+    call Bird.undrawBird 1
+    pop temp 0
+    push constant 0
+    return

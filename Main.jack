@@ -1,0 +1,25 @@
+class Main{
+    function void main(){
+        var int x,y;
+        var int cont;
+        var Bird b;
+        let x = 100;
+        let y = 50;
+        let b = Bird.new(x, y);
+        let cont = 0;
+
+        while(cont < 100){
+            if(cont < 50){
+                do b.move_down();
+            }
+            else{
+                do b.move_up();
+            }
+            let cont = cont + 1;
+            do Sys.wait(100);
+        }
+
+        do b.undrawBird();
+        return;
+    }
+}
