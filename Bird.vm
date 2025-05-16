@@ -1,15 +1,19 @@
 function Bird.new 0
-    push constant 2
+    push constant 3
     call Memory.alloc 1
     pop pointer 0
     push argument 0
     pop this 0
     push argument 1
     pop this 1
+    push constant 3
+    pop this 2
     push pointer 0
-    call Bird.drawBird 1
-    pop temp 0
-    push pointer 0
+    return
+function Bird.getSprite 0
+    push argument 0
+    pop pointer 0
+    push this 2
     return
 function Bird.birdStructure 0
     push argument 0
@@ -328,56 +332,734 @@ function Bird.birdStructure 0
     pop temp 0
     push constant 0
     return
-function Bird.drawBird 0
+function Bird.birdStructure2 0
     push argument 0
     pop pointer 0
+    push this 0
+    push constant 2
+    sub
+    push this 1
+    push constant 5
+    sub
+    push this 0
+    push constant 3
+    add
+    push this 1
+    push constant 5
+    sub
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 4
+    add
+    push this 1
+    push constant 4
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 5
+    add
+    push this 1
+    push constant 3
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 6
+    add
+    push this 1
+    push constant 2
+    sub
+    push this 0
+    push constant 6
+    add
+    push this 1
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 2
+    add
+    push this 1
+    push constant 1
+    add
+    push this 0
+    push constant 7
+    add
+    push this 1
+    push constant 1
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 8
+    add
+    push this 1
+    push constant 2
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 1
+    add
+    push this 1
+    push constant 2
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push this 1
+    push constant 3
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 1
+    add
+    push this 1
+    push constant 4
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 2
+    add
+    push this 1
+    push constant 5
+    add
+    push this 0
+    push constant 6
+    add
+    push this 1
+    push constant 5
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 7
+    add
+    push this 1
+    push constant 4
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 7
+    add
+    push this 1
+    push constant 3
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 2
+    add
+    push this 1
+    push constant 3
+    add
+    push this 0
+    push constant 6
+    add
+    push this 1
+    push constant 3
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 1
+    add
+    push this 1
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 1
+    add
+    push this 1
+    push constant 4
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push this 1
+    push constant 1
+    sub
+    push this 0
+    push this 1
+    push constant 3
+    sub
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 4
+    add
+    push this 1
+    push constant 1
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 4
+    add
+    push this 1
+    push constant 2
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 3
+    sub
+    push this 1
+    push constant 6
+    add
+    push this 0
+    push constant 1
+    add
+    push this 1
+    push constant 6
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 4
+    sub
+    push this 1
+    push constant 5
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 5
+    sub
+    push this 1
+    push constant 5
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 6
+    sub
+    push this 1
+    push constant 4
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 8
+    sub
+    push this 1
+    push constant 3
+    add
+    push this 0
+    push constant 4
+    sub
+    push this 1
+    push constant 3
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 9
+    sub
+    push this 1
+    push constant 1
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 9
+    sub
+    push this 1
+    push constant 2
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 3
+    sub
+    push this 1
+    push constant 1
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 3
+    sub
+    push this 1
+    push constant 2
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 8
+    sub
+    push this 1
+    push this 0
+    push constant 4
+    sub
+    push this 1
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 8
+    sub
+    push this 1
+    push constant 1
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 7
+    sub
+    push this 1
+    push constant 2
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 6
+    sub
+    push this 1
+    push constant 3
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 5
+    sub
+    push this 1
+    push constant 4
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 4
+    sub
+    push this 1
+    push constant 4
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 3
+    sub
+    push this 1
+    push constant 4
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push constant 0
+    return
+function Bird.birdStructure3 0
+    push argument 0
+    pop pointer 0
+    push this 0
+    push constant 2
+    sub
+    push this 1
+    push constant 5
+    sub
+    push this 0
+    push constant 3
+    add
+    push this 1
+    push constant 5
+    sub
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 4
+    add
+    push this 1
+    push constant 4
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 5
+    add
+    push this 1
+    push constant 3
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 6
+    add
+    push this 1
+    push constant 2
+    sub
+    push this 0
+    push constant 6
+    add
+    push this 1
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 2
+    add
+    push this 1
+    push constant 1
+    add
+    push this 0
+    push constant 7
+    add
+    push this 1
+    push constant 1
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 8
+    add
+    push this 1
+    push constant 2
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 1
+    add
+    push this 1
+    push constant 2
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push this 1
+    push constant 3
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 1
+    add
+    push this 1
+    push constant 4
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 2
+    add
+    push this 1
+    push constant 5
+    add
+    push this 0
+    push constant 6
+    add
+    push this 1
+    push constant 5
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 7
+    add
+    push this 1
+    push constant 4
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 7
+    add
+    push this 1
+    push constant 3
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 2
+    add
+    push this 1
+    push constant 3
+    add
+    push this 0
+    push constant 6
+    add
+    push this 1
+    push constant 3
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 1
+    add
+    push this 1
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 1
+    add
+    push this 1
+    push constant 4
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push this 1
+    push constant 1
+    sub
+    push this 0
+    push this 1
+    push constant 3
+    sub
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 4
+    add
+    push this 1
+    push constant 1
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 4
+    add
+    push this 1
+    push constant 2
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 3
+    sub
+    push this 1
+    push constant 6
+    add
+    push this 0
+    push constant 1
+    add
+    push this 1
+    push constant 6
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 4
+    sub
+    push this 1
+    push constant 5
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 5
+    sub
+    push this 1
+    push constant 5
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 7
+    sub
+    push this 1
+    push constant 5
+    add
+    push this 0
+    push constant 4
+    sub
+    push this 1
+    push constant 5
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 7
+    sub
+    push this 1
+    push constant 1
+    add
+    push this 0
+    push constant 3
+    sub
+    push this 1
+    push constant 1
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 2
+    sub
+    push this 1
+    push constant 2
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 3
+    sub
+    push this 1
+    push constant 3
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 4
+    sub
+    push this 1
+    push constant 4
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 8
+    sub
+    push this 1
+    push constant 2
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 8
+    sub
+    push this 1
+    push constant 3
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 8
+    sub
+    push this 1
+    push constant 4
+    add
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 7
+    sub
+    push this 1
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 7
+    sub
+    push this 1
+    push constant 1
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 6
+    sub
+    push this 1
+    push constant 2
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 5
+    sub
+    push this 1
+    push constant 3
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 4
+    sub
+    push this 1
+    push constant 4
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push this 0
+    push constant 3
+    sub
+    push this 1
+    push constant 4
+    sub
+    call Screen.drawPixel 2
+    pop temp 0
+    push constant 0
+    return
+function Bird.structureSelector 0
+    push argument 0
+    pop pointer 0
+    push this 2
+    push constant 1
+    eq
+    not
+    if-goto Bird_1
+    push pointer 0
+    call Bird.birdStructure 1
+    pop temp 0
+    goto Bird_0
+label Bird_1
+    push this 2
+    push constant 2
+    eq
+    not
+    if-goto Bird_3
+    push pointer 0
+    call Bird.birdStructure2 1
+    pop temp 0
+    goto Bird_2
+label Bird_3
+    push pointer 0
+    call Bird.birdStructure3 1
+    pop temp 0
+label Bird_2
+label Bird_0
+    push constant 0
+    return
+function Bird.birdPaint 0
+    push argument 0
+    pop pointer 0
+    push argument 1
+    call Screen.setColor 1
+    pop temp 0
+    push pointer 0
+    call Bird.structureSelector 1
+    pop temp 0
+    push constant 0
+    return
+function Bird.move 0
+    push argument 0
+    pop pointer 0
+    push argument 1
     push constant 1
     neg
-    call Screen.setColor 1
-    pop temp 0
-    push pointer 0
-    call Bird.birdStructure 1
-    pop temp 0
-    push constant 0
-    return
-function Bird.undrawBird 0
-    push argument 0
-    pop pointer 0
-    push constant 0
-    call Screen.setColor 1
-    pop temp 0
-    push pointer 0
-    call Bird.birdStructure 1
-    pop temp 0
-    push constant 0
-    return
-function Bird.move_up 0
-    push argument 0
-    pop pointer 0
-    push pointer 0
-    call Bird.undrawBird 1
-    pop temp 0
+    eq
+    not
+    if-goto Bird_5
     push this 1
     push constant 1
     sub
     pop this 1
-    push pointer 0
-    call Bird.drawBird 1
-    pop temp 0
-    push constant 0
-    return
-function Bird.move_down 0
-    push argument 0
-    pop pointer 0
-    push pointer 0
-    call Bird.undrawBird 1
-    pop temp 0
+    goto Bird_4
+label Bird_5
     push this 1
     push constant 1
     add
     pop this 1
+label Bird_4
     push pointer 0
-    call Bird.drawBird 1
+    push constant 1
+    neg
+    call Bird.birdPaint 2
     pop temp 0
+    push constant 0
+    return
+function Bird.change_sprite 0
+    push argument 0
+    pop pointer 0
+    push this 2
+    push constant 3
+    eq
+    not
+    if-goto Bird_7
+    push constant 1
+    pop this 2
+    goto Bird_6
+label Bird_7
+    push this 2
+    push constant 1
+    add
+    pop this 2
+label Bird_6
     push constant 0
     return

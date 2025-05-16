@@ -1,6 +1,6 @@
 class Main{
     function void main(){
-        var int x,y;
+        var int x,y,mod;
         var int cont;
         var Bird b;
         let x = 100;
@@ -10,16 +10,25 @@ class Main{
 
         while(cont < 100){
             if(cont < 50){
-                do b.move_down();
+                do b.move(false);
             }
             else{
-                do b.move_up();
+                do b.move(true);
             }
-            let cont = cont + 1;
             do Sys.wait(100);
+            do b.birdPaint(false);
+
+            let mod = cont - ((cont / 5) * 5);
+            if(mod = 0){
+                do Output.moveCursor(15, 15);
+                do Output.printInt(b.getSprite());
+                do b.change_sprite();
+            }
+
+            let cont = cont + 1;
         }
 
-        do b.undrawBird();
+        do b.birdPaint(false);
         return;
     }
 }

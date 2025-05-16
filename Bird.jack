@@ -1,11 +1,15 @@
 class Bird {
-    field int x, y;
+    field int x, y, sprite;
 
     constructor Bird new(int x_value, int y_value){
         let x = x_value;
         let y = y_value;
-        do drawBird();
+        let sprite = 3;
         return this;
+    }
+
+    method int getSprite(){
+        return sprite;
     }
 
     method void birdStructure(){
@@ -44,42 +48,142 @@ class Bird {
         do Screen.drawPixel(x-3, y-1);
         do Screen.drawPixel(x-2, y);
         do Screen.drawPixel(x-2, y+1);
+
+        return;
+    }
+
+    method void birdStructure2(){
+
         //ESTRUCTURA DEL BIRD 1 (ALAS EN LA MITAD)
+        do Screen.drawLine(x-2, y-5,x+3,y-5);
+        do Screen.drawPixel(x+4,y-4);
+        do Screen.drawPixel(x+5,y-3);
+        do Screen.drawLine(x+6, y-2,x+6,y);
+        do Screen.drawLine(x+2, y+1, x+7, y+1);
+        do Screen.drawPixel(x+8, y+2);
+        do Screen.drawPixel(x+1, y+2);
+        do Screen.drawPixel(x, y+3);
+        do Screen.drawPixel(x+1, y+4);
+        do Screen.drawLine(x+2, y+5, x+6,y+5);
+        do Screen.drawPixel(x+7, y+4);
+        do Screen.drawPixel(x+7, y+3);
+        do Screen.drawLine(x+2, y+3, x+6, y+3);
+        do Screen.drawPixel(x+1,y);
+        do Screen.drawPixel(x+1,y-4);
+        do Screen.drawLine(x,y-1,x, y-3);
+        do Screen.drawPixel(x+4, y-1);
+        do Screen.drawPixel(x+4,y-2);
 
-        ...
+        do Screen.drawLine(x-3, y+6, x+1, y+6); 
+        do Screen.drawPixel(x-4, y+5);
+        do Screen.drawPixel(x-5, y+5);
+    
+        do Screen.drawPixel(x-6, y+4); 
+        do Screen.drawLine(x-8, y+3, x-4, y+3); 
+        do Screen.drawPixel(x-9, y+1);
+        do Screen.drawPixel(x-9, y+2);
+        do Screen.drawPixel(x-3 ,y +1 );
+        do Screen.drawPixel( x-3,y+2 );
+        do Screen.drawLine(x-8, y, x-4, y);
+        do Screen.drawPixel(x-8, y-1);
+        do Screen.drawPixel(x-7, y-2);
+        do Screen.drawPixel(x-6, y-3);
+        do Screen.drawPixel(x-5, y-4);
+        do Screen.drawPixel(x-4, y-4);
+        do Screen.drawPixel(x-3, y-4);
 
-        //ESTRUCTURA DEL BIRD 1 (ALAS ABAJO)
 
-        ...
 
         return;
     }
 
-    method void drawBird(){
-        do Screen.setColor(true);
-        do birdStructure();
+    method void birdStructure3(){
+
+        do Screen.drawLine(x-2, y-5,x+3,y-5);
+        do Screen.drawPixel(x+4,y-4);
+        do Screen.drawPixel(x+5,y-3);
+        do Screen.drawLine(x+6, y-2,x+6,y);
+        do Screen.drawLine(x+2, y+1, x+7, y+1);
+        do Screen.drawPixel(x+8, y+2);
+        do Screen.drawPixel(x+1, y+2);
+        do Screen.drawPixel(x, y+3);
+        do Screen.drawPixel(x+1, y+4);
+        do Screen.drawLine(x+2, y+5, x+6,y+5);
+        do Screen.drawPixel(x+7, y+4);
+        do Screen.drawPixel(x+7, y+3);
+        do Screen.drawLine(x+2, y+3, x+6, y+3);
+        do Screen.drawPixel(x+1,y);
+        do Screen.drawPixel(x+1,y-4);
+        do Screen.drawLine(x,y-1,x, y-3);
+        do Screen.drawPixel(x+4, y-1);
+        do Screen.drawPixel(x+4,y-2);
+
+        do Screen.drawLine(x-3, y+6, x+1, y+6); 
+        do Screen.drawPixel(x-4, y+5);
+        do Screen.drawPixel(x-5, y+5);
+
+        do Screen.drawLine(x-7, y+5, x-4, y+5);
+        do Screen.drawLine(x-7, y+1, x-3, y+1);
+        do Screen.drawPixel(x-2, y+2);
+        do Screen.drawPixel(x-3, y+3);
+        do Screen.drawPixel(x-4, y+4);
+        do Screen.drawPixel(x-8, y+2);
+        do Screen.drawPixel(x-8, y+3);
+        do Screen.drawPixel(x-8, y+4);
+        do Screen.drawPixel(x-7, y);
+        do Screen.drawPixel(x-7, y-1);
+        do Screen.drawPixel(x-6, y-2);
+        do Screen.drawPixel(x-5, y-3);
+        do Screen.drawPixel(x-4, y-4);
+        do Screen.drawPixel(x-3 , y-4);
+
+
+
         return;
     }
 
-    method void undrawBird(){
-        do Screen.setColor(false);
-        do birdStructure();
+
+    method void structureSelector(){
+        if(sprite = 1){
+            do birdStructure();
+        }
+        else{
+            if(sprite = 2){
+                do birdStructure2();
+            }
+            else{
+                do birdStructure3();
+            }
+        }
         return;
     }
 
-    method void move_up(){
-        do undrawBird();
-        let y = y - 1;
-        do drawBird();
+    method void birdPaint(boolean color){
+        do Screen.setColor(color);
+        do structureSelector();
         return;
     }
 
-    method void move_down(){
-        do undrawBird();
-        let y = y + 1;
-        do drawBird();
+    method void move(boolean move_up){
+        if(move_up = true){
+            let y = y - 1;
+        }
+        else{
+            let y = y + 1;
+        }
+        do birdPaint(true);
         return;
     }
 
+    method void change_sprite(){
+        if(sprite = 3){
+            let sprite = 1;
+        }
+        else{
+            let sprite = sprite + 1;
+        }
+        return;
+
+    }
     
 }
