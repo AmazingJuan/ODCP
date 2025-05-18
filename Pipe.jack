@@ -1,4 +1,93 @@
 class Pipe{
+    field int x,y,space; //Estos fields se autodescriben, space es el espacio que hay entre la parte de arriba y abajo del pipe.
+
+    constructor Pipe new(int x_value, int y_value, int space_value){
+        let x = x_value;
+        let y = y_value;
+        let space = space_value;
+        return this;
+    }
+
+    method int getX(){
+        return x;
+    }
+
+    method void setX(int x_value){
+        let x = x_value;
+        return;
+    }
+
+    method void setY(int y_value){
+        let y = y_value;
+        return;
+    }
+
+    method void movePipe() {
+        let x = x - 2; //Siempre la pipe se mueve a la izquierda dos pixeles.
+        if (x < 20) { //Si esta muy proxima a chocar con la pantalla entonces la mandamos para adelante
+            let x = 300; 
+            if (space = 80) { //Aca cambiamos el espacio por cada adelantamiento, como para simular cambio de pipe jajaj
+                let space = 60;
+            } else {
+                let space = 80;
+            }
+        }
+        return;
+    }
+
+
+    method void pipePaint(boolean color){
+        do Screen.setColor(color);
+
+        //Aqui literal pintamos la parte de arriba y abajo, no tiene mucha ciencia
+        //Parte arriba
+        do Screen.drawLine(x-9, y-space, x+9, y-space );
+        do Screen.drawLine(x-9, y-8-space, x+9, y-8-space);
+        do Screen.drawLine(x-9, y-space, x-9, y-8-space);
+        do Screen.drawLine(x+9, y-space, x+9, y-space-8);
+        do Screen.drawLine(x-8, y-9-space, x-8, 0);
+        do Screen.drawLine(x+8, y-9-space, x+8, 0);
+
+        //Parte abajo
+        do Screen.drawLine(x-9, y, x+9, y);
+        do Screen.drawLine(x-9, y+8, x+9, y+8);
+        do Screen.drawLine(x-9, y, x-9, y+8);
+        do Screen.drawLine(x+9, y, x+9, y+8);
+        do Screen.drawLine(x-8, y+9, x-8, 256);
+        do Screen.drawLine(x+8, y+9, x+8, 256);
+
+        return;
+    }
+
+    method boolean checkCollision(int birdX, int birdY) {
+        //Variables que nos permiten establecer los limites de la tuberia y el pajarito
+        var int bird_izq, bird_der;
+        var int bird_arriba, bird_abajo;
+        var int pipe_arriba, pipe_abajo;
+
+        let bird_izq = birdX - 8;
+        let bird_der = birdX + 8;
+
+        let bird_arriba = birdY - 5;
+        let bird_abajo = birdY + 6;
+
+        let pipe_arriba = y - space;
+        let pipe_abajo = y;
+
+        //Primero se verifica si el pajaro no esta tocando el limite de la pantalla.
+        if ((bird_arriba < 0) | (bird_abajo > 256)) {
+            return true;
+        }
+
+        if ((bird_der > (x - 9)) & (bird_izq < (x + 9))) { //Si el pajaro solapa la direccion x con la pipe, entra a este bloque.
+            if ((bird_arriba < pipe_arriba) | (bird_abajo > pipe_abajo)) {  //Ahora si se solapan tambien en y, entonces retorna true.
+                return true; // Colision
+            }
+        }
+        return false; // No colision
+    }
+
+
 
     
 

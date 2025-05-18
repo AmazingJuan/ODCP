@@ -1,0 +1,307 @@
+function Pipe.new 0
+    push constant 3
+    call Memory.alloc 1
+    pop pointer 0
+    push argument 0
+    pop this 0
+    push argument 1
+    pop this 1
+    push argument 2
+    pop this 2
+    push pointer 0
+    return
+function Pipe.getX 0
+    push argument 0
+    pop pointer 0
+    push this 0
+    return
+function Pipe.setX 0
+    push argument 0
+    pop pointer 0
+    push argument 1
+    pop this 0
+    push constant 0
+    return
+function Pipe.setY 0
+    push argument 0
+    pop pointer 0
+    push argument 1
+    pop this 1
+    push constant 0
+    return
+function Pipe.movePipe 0
+    push argument 0
+    pop pointer 0
+    push this 0
+    push constant 2
+    sub
+    pop this 0
+    push this 0
+    push constant 20
+    lt
+    not
+    if-goto Pipe_1
+    push constant 300
+    pop this 0
+    push this 2
+    push constant 80
+    eq
+    not
+    if-goto Pipe_3
+    push constant 60
+    pop this 2
+    goto Pipe_2
+label Pipe_3
+    push constant 80
+    pop this 2
+label Pipe_2
+    goto Pipe_0
+label Pipe_1
+label Pipe_0
+    push constant 0
+    return
+function Pipe.pipePaint 0
+    push argument 0
+    pop pointer 0
+    push argument 1
+    call Screen.setColor 1
+    pop temp 0
+    push this 0
+    push constant 9
+    sub
+    push this 1
+    push this 2
+    sub
+    push this 0
+    push constant 9
+    add
+    push this 1
+    push this 2
+    sub
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 9
+    sub
+    push this 1
+    push constant 8
+    sub
+    push this 2
+    sub
+    push this 0
+    push constant 9
+    add
+    push this 1
+    push constant 8
+    sub
+    push this 2
+    sub
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 9
+    sub
+    push this 1
+    push this 2
+    sub
+    push this 0
+    push constant 9
+    sub
+    push this 1
+    push constant 8
+    sub
+    push this 2
+    sub
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 9
+    add
+    push this 1
+    push this 2
+    sub
+    push this 0
+    push constant 9
+    add
+    push this 1
+    push this 2
+    sub
+    push constant 8
+    sub
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 8
+    sub
+    push this 1
+    push constant 9
+    sub
+    push this 2
+    sub
+    push this 0
+    push constant 8
+    sub
+    push constant 0
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 8
+    add
+    push this 1
+    push constant 9
+    sub
+    push this 2
+    sub
+    push this 0
+    push constant 8
+    add
+    push constant 0
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 9
+    sub
+    push this 1
+    push this 0
+    push constant 9
+    add
+    push this 1
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 9
+    sub
+    push this 1
+    push constant 8
+    add
+    push this 0
+    push constant 9
+    add
+    push this 1
+    push constant 8
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 9
+    sub
+    push this 1
+    push this 0
+    push constant 9
+    sub
+    push this 1
+    push constant 8
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 9
+    add
+    push this 1
+    push this 0
+    push constant 9
+    add
+    push this 1
+    push constant 8
+    add
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 8
+    sub
+    push this 1
+    push constant 9
+    add
+    push this 0
+    push constant 8
+    sub
+    push constant 256
+    call Screen.drawLine 4
+    pop temp 0
+    push this 0
+    push constant 8
+    add
+    push this 1
+    push constant 9
+    add
+    push this 0
+    push constant 8
+    add
+    push constant 256
+    call Screen.drawLine 4
+    pop temp 0
+    push constant 0
+    return
+function Pipe.checkCollision 6
+    push argument 0
+    pop pointer 0
+    push argument 1
+    push constant 8
+    sub
+    pop local 0
+    push argument 1
+    push constant 8
+    add
+    pop local 1
+    push argument 2
+    push constant 5
+    sub
+    pop local 2
+    push argument 2
+    push constant 6
+    add
+    pop local 3
+    push this 1
+    push this 2
+    sub
+    pop local 4
+    push this 1
+    pop local 5
+    push local 2
+    push constant 0
+    lt
+    push local 3
+    push constant 256
+    gt
+    or
+    not
+    if-goto Pipe_5
+    push constant 1
+    neg
+    return
+    goto Pipe_4
+label Pipe_5
+label Pipe_4
+    push local 1
+    push this 0
+    push constant 9
+    sub
+    gt
+    push local 0
+    push this 0
+    push constant 9
+    add
+    lt
+    and
+    not
+    if-goto Pipe_7
+    push local 2
+    push local 4
+    lt
+    push local 3
+    push local 5
+    gt
+    or
+    not
+    if-goto Pipe_9
+    push constant 1
+    neg
+    return
+    goto Pipe_8
+label Pipe_9
+label Pipe_8
+    goto Pipe_6
+label Pipe_7
+label Pipe_6
+    push constant 0
+    return

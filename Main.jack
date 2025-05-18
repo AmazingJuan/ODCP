@@ -1,52 +1,119 @@
 class Main {
     function void main() {
-        var int i, j, score, perdio;
-        var int spaces;
+        var int i, j, score, spaces, x_pipe_antes, mensaje; //Enteros que sirven para distintos propositos
+        var boolean perdio; //Esta variable la usamos para poder saber si la persona q esta jugando gano o perdio
+        var char tecla_presionada; //Esto es para ver q tecla esta presionada
+        //Declaracion de objetos bird y pipe.
         var Bird b;
-        var char tecla_presionada;
+        var Pipe p;
+        let mensaje = 1; //Q mensaje se le mostrara al usuario, 1 para bienvenida, 2 para perdio, y 3 gano.
+        let spaces = 15; 
 
-        let spaces = 15;
-        let perdio = 0;
-        let score = 0;
-        let i = 0;
-        while (i < 11) {
-            do Output.println();
-            let i = i + 1;
-        }
 
-        let j = 0;
-        while (j < spaces) {
-            do Output.printString(" ");
-            let j = j + 1;
-        }
+        while(true){ //Ciclo  infinito para q el usuario pueda jugar infinitamente
+            let i = 0; //Esta i sirve para saltar de linea varias veces.
+            let score = 0; //Puntaje del user.
+            let perdio = 0; //Perdio = 0 es q no ha perdido y 1 q si ha perdido
 
-        do Output.printString("Flappy Bird");
-        do Output.println();
-        let j = 0;
-        while (j < spaces) {
-            do Output.printString(" ");
-            let j = j + 1;
-        }
-        do Output.printString("Presiona R para empezar a jugar");
-        
-        while(~(tecla_presionada = 82) & ~(tecla_presionada = 114)){
-            let tecla_presionada = Keyboard.keyPressed();
-        }
-
-        do Screen.clearScreen();
-        let b = Bird.new(150, 128);
-
-        while (perdio = 0 & ~(score = 100)) {
-            let tecla_presionada = Keyboard.keyPressed();
-
-            if (tecla_presionada = 32) {
-                do b.salto();
+            //Todo lo q sigue se encarga de mostrar los mensajes al user sobre el estado del juego
+            while (i < 11) {
+                do Output.println();
+                let i = i + 1;
             }
 
-            do b.caer();
-            do Sys.wait(1);
-            do Output.moveCursor(22, 1);
-            do Output.printInt(score);
+            let j = 0;
+            while (j < spaces) {
+                do Output.printString(" ");
+                let j = j + 1;
+            }
+            if(mensaje = 1){
+                do Output.printString("Flappy Bird");
+            }
+            else{
+                if(mensaje = 2){
+                    do Output.printString("Lo sentimos, lamentablemente has perdido :(");
+                }
+                else{
+                    do Output.printString("Felicidades, has ganado. :)");
+                }
+            }
+            do Output.println();
+            let j = 0;
+            while (j < spaces) {
+                do Output.printString(" ");
+                let j = j + 1;
+            }
+            if(mensaje = 1){
+                do Output.printString("Presiona R para empezar a jugar");
+            }
+            else{
+                do Output.printString("Presiona R para volver a jugar");
+            }
+            
+            //Aca se espera q el user ingrese la letra R o la r.
+
+            while(~(tecla_presionada = 82) & ~(tecla_presionada = 114)){
+                let tecla_presionada = Keyboard.keyPressed();
+            }
+
+            do Screen.clearScreen();
+            //Si apenas comenzo el juego se instancian los objetos.
+            if(mensaje = 1){
+                let b = Bird.new(150, 128);
+                let p = Pipe.new(300, 128, 80);
+            }
+            else{
+                //Sino se ponen los obhetos en su posicion por defecto.
+                do b.setX(150);
+                do b.setY(128);
+                do p.setX(300);
+                do p.setY(128);
+            }
+
+            while (~perdio & ~(score = 100)) { //Este while verifica si el usuario perdio o gano
+                let tecla_presionada = Keyboard.keyPressed();
+
+                if (tecla_presionada = 32) {
+                    do b.salto(); //Salta si presiona el espacio
+                }
+
+                
+
+                let x_pipe_antes = p.getX(); //Obtenemos la posicion del pipe antes de moverse.
+                //Quitamos los sprites anteriores del pajaro y la pipe
+                do b.birdPaint(false);
+                do p.pipePaint(false);
+                //Movemos las posiciones de la pipe y el pajaro (no los pintamos aun)
+                do b.caer();
+                do p.movePipe();
+
+                if (p.checkCollision(b.getX(), b.getY())) { //Verifica si colisionan en las nuevas posiciones
+                    let perdio = 1; //Si colisionan entonces perdiste jajajaj
+                } else { //Si no colisionan entonces pintamos los pajaros y el score.
+                    do b.birdPaint(true);
+                    do p.pipePaint(true);
+                    if (x_pipe_antes - p.getX() < 0) { //Aqui se verifica si la pipe cambio de posicion hacia la derecha, si es asi entonces score++
+                        let score = score + 1;
+                        //Aca simplemente actualizamos el score en pantalla.
+                    }
+                }
+                do Output.moveCursor(22,1);
+                do Output.printString("Score: ");
+                do Output.printInt(score);
+                
+                do Sys.wait(1); //Como para hacer la ilusion de que se esta moviendo todo, ponemos a esperar un ms.
+
+            
+            }
+            do Output.moveCursor(0,0);
+            do Screen.clearScreen();
+            //Cambiamos de mensaje dependiendo si el usuario perdio o gano
+            if(perdio = 1){
+                let mensaje = 2;
+            }
+            else{
+                let mensaje = 3;
+            }
         }
         return;
     }

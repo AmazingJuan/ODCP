@@ -1,5 +1,5 @@
 class Bird {
-    field int x, y, sprite, velocidad, counter;
+    field int x, y, sprite, velocidad, counter; //Variables que nos permiten ver la posicion, sprite y velocidad del pajaro.
 
     constructor Bird new(int x_value, int y_value){
         let x = x_value;
@@ -10,8 +10,23 @@ class Bird {
         return this;
     }
 
-    method int getSprite(){
-        return sprite;
+
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
+    method void setX(int x_value){
+        let x = x_value;
+        return;
+    }
+
+    method void setY(int y_value){
+        let y = y_value;
+        return;
     }
 
     method void birdStructure(){
@@ -146,7 +161,7 @@ class Bird {
 
 
     method void structureSelector(){
-        if(sprite = 1){
+        if(sprite = 1){ //Para cada sprite se selecciona la estructura correspondiente.
             do birdStructure();
         }
         else{
@@ -161,12 +176,12 @@ class Bird {
     }
 
     method void birdPaint(boolean color){
-        do Screen.setColor(color);
+        do Screen.setColor(color); //Se pinta o se elimina el pajaro segun el parametro.
         do structureSelector();
         return;
     }
 
-    method void change_sprite(){
+    method void change_sprite(){ //Esta funcion permite cada 10 ciclos cambiar de sprite, lo que simula como si el pajaro estuviara aleteando
         let counter = counter + 1; 
         if (counter = 10) {
             if (sprite = 3) {
@@ -182,21 +197,20 @@ class Bird {
 
     }
 
-    method void salto(){
+    method void salto(){ //Ponemos la velocidad en -7, entonces va a subir 7 pixeles por ciclo.
         let velocidad = -7;
         return;
     }
 
     method void caer(){
-        do birdPaint(false);
-        do change_sprite();
-        let velocidad = velocidad + 1;
+        
+        do change_sprite(); //Se trata de cambiar de sprite cada vez que cae.
+        let velocidad = velocidad + 1; //Se va aumentando la velocidad, cuando salta la velocidad se vuelve cada vez menos negativa.
 
-        if (velocidad > 3) {
+        if (velocidad > 3) { //Si la velocidad es mayor de 3 pixeles hacia abajo cada ciclo, entonces para de aumentar la velocidad hacia abajo
             let velocidad = 3;
         }
-        let y = y + velocidad;
-        do birdPaint(true);
+        let y = y + velocidad; //se actualiza la posicion segun la velocidad.
         return;
     }
 

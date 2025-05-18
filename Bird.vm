@@ -14,10 +14,29 @@ function Bird.new 0
     pop this 2
     push pointer 0
     return
-function Bird.getSprite 0
+function Bird.getX 0
     push argument 0
     pop pointer 0
-    push this 2
+    push this 0
+    return
+function Bird.getY 0
+    push argument 0
+    pop pointer 0
+    push this 1
+    return
+function Bird.setX 0
+    push argument 0
+    pop pointer 0
+    push argument 1
+    pop this 0
+    push constant 0
+    return
+function Bird.setY 0
+    push argument 0
+    pop pointer 0
+    push argument 1
+    pop this 1
+    push constant 0
     return
 function Bird.birdStructure 0
     push argument 0
@@ -1066,10 +1085,6 @@ function Bird.caer 0
     push argument 0
     pop pointer 0
     push pointer 0
-    push constant 0
-    call Bird.birdPaint 2
-    pop temp 0
-    push pointer 0
     call Bird.change_sprite 1
     pop temp 0
     push this 3
@@ -1090,10 +1105,5 @@ label Bird_8
     push this 3
     add
     pop this 1
-    push pointer 0
-    push constant 1
-    neg
-    call Bird.birdPaint 2
-    pop temp 0
     push constant 0
     return
