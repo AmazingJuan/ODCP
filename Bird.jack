@@ -1,9 +1,11 @@
 class Bird {
-    field int x, y, sprite;
+    field int x, y, sprite, velocidad, counter;
 
     constructor Bird new(int x_value, int y_value){
         let x = x_value;
         let y = y_value;
+        let velocidad = 0;
+        let counter = 0;
         let sprite = 3;
         return this;
     }
@@ -164,26 +166,39 @@ class Bird {
         return;
     }
 
-    method void move(boolean move_up){
-        if(move_up = true){
-            let y = y - 1;
+    method void change_sprite(){
+        let counter = counter + 1; 
+        if (counter = 10) {
+            if (sprite = 3) {
+                let sprite = 1;
+            } else {
+                let sprite = sprite + 1;
+            }
+
+            let counter = 0;
         }
-        else{
-            let y = y + 1;
+
+        return;
+
+    }
+
+    method void salto(){
+        let velocidad = -7;
+        return;
+    }
+
+    method void caer(){
+        do birdPaint(false);
+        do change_sprite();
+        let velocidad = velocidad + 1;
+
+        if (velocidad > 3) {
+            let velocidad = 3;
         }
+        let y = y + velocidad;
         do birdPaint(true);
         return;
     }
 
-    method void change_sprite(){
-        if(sprite = 3){
-            let sprite = 1;
-        }
-        else{
-            let sprite = sprite + 1;
-        }
-        return;
-
-    }
     
 }

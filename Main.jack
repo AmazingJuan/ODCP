@@ -1,34 +1,53 @@
-class Main{
-    function void main(){
-        var int x,y,mod;
-        var int cont;
+class Main {
+    function void main() {
+        var int i, j, score, perdio;
+        var int spaces;
         var Bird b;
-        let x = 100;
-        let y = 50;
-        let b = Bird.new(x, y);
-        let cont = 0;
+        var char tecla_presionada;
 
-        while(cont < 100){
-            if(cont < 50){
-                do b.move(false);
-            }
-            else{
-                do b.move(true);
-            }
-            do Sys.wait(100);
-            do b.birdPaint(false);
-
-            let mod = cont - ((cont / 5) * 5);
-            if(mod = 0){
-                do Output.moveCursor(15, 15);
-                do Output.printInt(b.getSprite());
-                do b.change_sprite();
-            }
-
-            let cont = cont + 1;
+        let spaces = 15;
+        let perdio = 0;
+        let score = 0;
+        let i = 0;
+        while (i < 11) {
+            do Output.println();
+            let i = i + 1;
         }
 
-        do b.birdPaint(false);
+        let j = 0;
+        while (j < spaces) {
+            do Output.printString(" ");
+            let j = j + 1;
+        }
+
+        do Output.printString("Flappy Bird");
+        do Output.println();
+        let j = 0;
+        while (j < spaces) {
+            do Output.printString(" ");
+            let j = j + 1;
+        }
+        do Output.printString("Presiona R para empezar a jugar");
+        
+        while(~(tecla_presionada = 82) & ~(tecla_presionada = 114)){
+            let tecla_presionada = Keyboard.keyPressed();
+        }
+
+        do Screen.clearScreen();
+        let b = Bird.new(150, 128);
+
+        while (perdio = 0 & ~(score = 100)) {
+            let tecla_presionada = Keyboard.keyPressed();
+
+            if (tecla_presionada = 32) {
+                do b.salto();
+            }
+
+            do b.caer();
+            do Sys.wait(1);
+            do Output.moveCursor(22, 1);
+            do Output.printInt(score);
+        }
         return;
     }
 }
